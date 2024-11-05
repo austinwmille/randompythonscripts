@@ -134,12 +134,23 @@
         .contact-info a:hover {
             text-decoration: underline;
         }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #555;
+            background-color: #444;
+            color: #ddd;
+            margin-top: 8px;
+            font-size: 0.9em;
+            resize: vertical; /* Allows user to expand if needed */
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Custom PC Builds</h1>
-        <p>High-performance PCs tailored to your needs</p>
+        <p>High-performance, personally hand-built PCs; cheaper than a corporation or resaler.</p>
     </header>
 
     <div class="container">
@@ -175,49 +186,88 @@
         <section class="customization">
             <h2>Build Your Own PC</h2>
             <p>Select your preferred components:</p>
-            <form action="mailto:hitmeup@austinmiller.net" method="post" enctype="text/plain">
+            <form action="mailto:hitmeup@austinmiller.net" method="post" enctype="text/plain" oninput="updatePrice()">
+                
+                <!-- CPU Dropdown -->
                 <label for="cpu">CPU:</label>
                 <select id="cpu" name="cpu">
-                    <option value="Intel i5">Intel i5</option>
-                    <option value="Intel i7">Intel i7</option>
-                    <option value="AMD Ryzen 5">AMD Ryzen 5</option>
-                    <option value="AMD Ryzen 7">AMD Ryzen 7</option>
-                    <option value="AMD Ryzen 9">AMD Ryzen 9</option>
+                    <option value="Intel i5" data-price="150">Intel i5 - $150</option>
+                    <option value="Intel i7" data-price="250">Intel i7 - $250</option>
+                    <option value="AMD Ryzen 5" data-price="180">AMD Ryzen 5 - $180</option>
+                    <option value="AMD Ryzen 7" data-price="280">AMD Ryzen 7 - $280</option>
+                    <option value="AMD Ryzen 9" data-price="400">AMD Ryzen 9 - $400</option>
                 </select>
-
+        
+                <!-- RAM Dropdown -->
                 <label for="ram">RAM:</label>
                 <select id="ram" name="ram">
-                    <option value="16GB">16GB</option>
-                    <option value="32GB">32GB</option>
-                    <option value="64GB">64GB</option>
+                    <option value="16GB" data-price="60">16GB - $60</option>
+                    <option value="32GB" data-price="120">32GB - $120</option>
+                    <option value="64GB" data-price="200">64GB - $200</option>
                 </select>
-
+        
+                <!-- Graphics Card Dropdown -->
                 <label for="gpu">Graphics Card:</label>
                 <select id="gpu" name="gpu">
-                    <option value="NVIDIA GTX 1660">NVIDIA GTX 1660</option>
-                    <option value="NVIDIA RTX 3060">NVIDIA RTX 3060</option>
-                    <option value="NVIDIA RTX 3080">NVIDIA RTX 3080</option>
+                    <option value="NVIDIA GTX 1660" data-price="250">NVIDIA GTX 1660 - $250</option>
+                    <option value="NVIDIA RTX 3060" data-price="350">NVIDIA RTX 3060 - $350</option>
+                    <option value="NVIDIA RTX 3080" data-price="700">NVIDIA RTX 3080 - $700</option>
                 </select>
-
+        
+                <!-- Storage Dropdown -->
                 <label for="storage">Storage:</label>
                 <select id="storage" name="storage">
-                    <option value="512GB SSD">512GB SSD</option>
-                    <option value="1TB SSD">1TB SSD</option>
-                    <option value="2TB SSD">2TB SSD</option>
+                    <option value="512GB SSD" data-price="50">512GB SSD - $50</option>
+                    <option value="1TB SSD" data-price="100">1TB SSD - $100</option>
+                    <option value="2TB SSD" data-price="180">2TB SSD - $180</option>
                 </select>
-
+        
+                <!-- Case Dropdown -->
+                <label for="case">Case and Color:</label>
+                <select id="case" name="case">
+                    <option value="Black Mid-Tower" data-price="70">Black Mid-Tower - $70</option>
+                    <option value="White Mid-Tower" data-price="80">White Mid-Tower - $80</option>
+                    <option value="RGB Glass Case" data-price="120">RGB Glass Case - $120</option>
+                    <option value="Minimalistic Black" data-price="90">Minimalistic Black - $90</option>
+                    <option value="Sleek Silver" data-price="100">Sleek Silver - $100</option>
+                </select>
+        
+                <!-- Estimated Price Display -->
+                <div style="margin-top: 20px; font-weight: bold; font-size: 1.2em; color: #ffb347;">
+                    Estimated MAX Price: $<span id="estimatedPrice">0</span>
+                </div>
+        
+                <!-- Notes Textarea -->
+                <label for="notes">Additional Notes (Anime character, special requests, etc.):</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="Describe any additional details here"></textarea>
+        
                 <button type="submit" class="submit-button">Submit Customization</button>
             </form>
         </section>
+        
+        <script>
+            function updatePrice() {
+                let total = 0;
+                const components = document.querySelectorAll('select');
+                components.forEach(component => {
+                    const price = parseFloat(component.selectedOptions[0].getAttribute('data-price'));
+                    if (!isNaN(price)) {
+                        total += price;
+                    }
+                });
+                document.getElementById('estimatedPrice').textContent = total.toFixed(2);
+            }
+        </script>
+        
 
         <!-- Payment and Queue Information Section -->
         <section class="payment-info">
             <h2>Here's the Plan</h2>
             <p>Once you submit your customization options, I’ll add it to my review queue. I’ll review the order to get a feel for what you’re looking for, and if I think it’s ready to start, I’ll send you an invoice and ask for payment. Right now, we're only using PayPal for security and convenience, but I'm open to other options if you have a preferred method. All fully paid designs will be moved to the build queue in the order of recieved payments. Both queues are worked from top down.</p>
-            <div class="personal-touch">
+
                 <h2>Make It Personal</h2>
                 <p>If you have a favorite anime character (or any character you love), let me know! I'll add a custom design to your case with a stencil, paint, or whatever medium suits it best. This is my way of making your build truly one-of-a-kind!</p>
-            </div>
+                <p></p>
             <!-- Insert your PayPal button code here -->
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
