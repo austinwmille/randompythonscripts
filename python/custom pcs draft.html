@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom PC Builds</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, sans-serif;
+            color: #ddd;
+            background-color: #2a2a2a;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        header {
+            position: relative;
+            background-image: url('andy-holmes-xA26xebY3dw-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+        }
+        header h1, header p {
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+    color: #ffcc66; /* Slightly brighter for better contrast */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow to pop against background */
+}
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #ffb347;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        .builds, .customization, .contact-info {
+            margin-top: 30px;
+        }
+        .build {
+            border-bottom: 1px solid #555;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .build:last-child {
+            border-bottom: none;
+        }
+        .specs {
+            font-size: 0.9em;
+            color: #bbb;
+            margin-top: 5px;
+        }
+        .customize-button {
+            background-color: #ffb347;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .customize-button:hover {
+            background-color: #ff9b29;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #555;
+            background-color: #444;
+            color: #ddd;
+        }
+        .submit-button {
+            background-color: #ffb347;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .submit-button:hover {
+            background-color: #ff9b29;
+        }
+        .personal-touch {
+            font-size: 1.1em;
+            color: #ffb347;
+            margin-top: 20px;
+        }
+        .contact-info a {
+            color: #ffb347;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Custom PC Builds</h1>
+        <p>High-performance PCs tailored to your needs</p>
+    </header>
+
+    <div class="container">
+        <!-- Builds Section -->
+        <section class="builds">
+            <h2>Our Builds</h2>
+            <div class="build">
+                <div>
+                    <h3>Gaming Beast</h3>
+                    <p class="specs">AMD Ryzen 9, 32GB RAM, NVIDIA RTX 3080, 1TB SSD</p>
+                </div>
+                <button class="customize-button" onclick="location.href='mailto:hitmeup@austinmiller.net?subject=Gaming Beast Customization Inquiry'">Customize</button>
+            </div>
+            <div class="build">
+                <div>
+                    <h3>Workstation Pro</h3>
+                    <p class="specs">Intel i9, 64GB RAM, NVIDIA Quadro, 2TB SSD</p>
+                </div>
+                <button class="customize-button" onclick="location.href='mailto:hitmeup@austinmiller.net?subject=Workstation Pro Customization Inquiry'">Customize</button>
+            </div>
+            <div class="build">
+                <div>
+                    <h3>Budget Friendly</h3>
+                    <p class="specs">AMD Ryzen 5, 16GB RAM, GTX 1660, 512GB SSD</p>
+                </div>
+                <button class="customize-button" onclick="location.href='mailto:hitmeup@austinmiller.net?subject=Budget Friendly Customization Inquiry'">Customize</button>
+            </div>
+        </section>
+
+        <!-- Interactive Customization Section -->
+        <section class="customization">
+            <h2>Build Your Own PC</h2>
+            <p>Select your preferred components:</p>
+            <form action="mailto:hitmeup@austinmiller.net" method="post" enctype="text/plain">
+                <label for="cpu">CPU:</label>
+                <select id="cpu" name="cpu">
+                    <option value="Intel i5">Intel i5</option>
+                    <option value="Intel i7">Intel i7</option>
+                    <option value="AMD Ryzen 5">AMD Ryzen 5
+                        <option value="AMD Ryzen 7">AMD Ryzen 7</option>
+                        <option value="AMD Ryzen 9">AMD Ryzen 9</option>
+                    </select>
+    
+                    <label for="ram">RAM:</label>
+                    <select id="ram" name="ram">
+                        <option value="16GB">16GB</option>
+                        <option value="32GB">32GB</option>
+                        <option value="64GB">64GB</option>
+                    </select>
+    
+                    <label for="gpu">Graphics Card:</label>
+                    <select id="gpu" name="gpu">
+                        <option value="NVIDIA GTX 1660">NVIDIA GTX 1660</option>
+                        <option value="NVIDIA RTX 3060">NVIDIA RTX 3060</option>
+                        <option value="NVIDIA RTX 3080">NVIDIA RTX 3080</option>
+                    </select>
+    
+                    <label for="storage">Storage:</label>
+                    <select id="storage" name="storage">
+                        <option value="512GB SSD">512GB SSD</option>
+                        <option value="1TB SSD">1TB SSD</option>
+                        <option value="2TB SSD">2TB SSD</option>
+                    </select>
+    
+                    <button type="submit" class="submit-button">Submit Customization</button>
+                </form>
+            </section>
+    
+            <!-- Personal Touch Section -->
+            <div class="personal-touch">
+                <p>If you tell me your favorite anime character, I’ll add a custom design on your case — whether it’s a stencil, paint, or drawing, I’ll make it look awesome!</p>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <p>Questions? Email me directly at <a href="mailto:hitmeup@austinmiller.net">hitmeup@austinmiller.net</a></p>
+            </div>
+        </div>
+    </body>
+    </html>
+    
